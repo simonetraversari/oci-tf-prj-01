@@ -4,6 +4,7 @@ schemaVersion: 1.1.0
 version: "20190304"
 locale: "en"
 ### https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Concepts/terraformconfigresourcemanager_topic-schema.htm
+### https://github.com/oracle-quickstart/oci-quickstart/blob/master/Marketplace%20Stack%20Schema.md
 
 variableGroups:
   - title: "Hidden Variable Group"
@@ -19,6 +20,14 @@ variableGroups:
       - TF_VCN01_CONFIG_DNS_LABEL
       - TF_VCN01_CONFIG_DISPLAY_NAME
       - TF_VCN01_CONFIG_COMPARTMENT_OCID
+      - TF_VCN01_IGW01_CONFIG_DISPLAY_NAME
+  
+  - title: "Subnet01 Configuration"
+    variables:
+      - TF_VCN01_SUBNET01_CONFIG_DISPLAY_NAME      
+      - TF_VCN01_SUBNET01_CONFIG_CIDR_BLOCK      
+      - TF_VCN01_SUBNET01_CONFIG_DNS_LABEL
+      - TF_VCN01_ROUTE01_CONFIG_DISPLAY_NAME
       
 variables:  
   TF_VCN01_CONFIG_CIDR_BLOCK:
@@ -37,10 +46,38 @@ variables:
     type: string
     required: true
     title: Name
-    description: The name of the new Virtual Cloud Network (VCN)
+    description: The name of the new Virtual Cloud Network (VCN).
   TF_VCN01_CONFIG_COMPARTMENT_OCID:
     type: oci:identity:compartment:id
     required: true
     title: Network Compartment
-    description: The compartment in which to create all Network resources
+    description: The compartment in which to create all Network resources.
     default: compartment_ocid
+  TF_VCN01_IGW01_CONFIG_DISPLAY_NAME:
+    type: string
+    required: true
+    title: IGW Name
+    description: The name of the Internet Gateway.
+  TF_VCN01_SUBNET01_CONFIG_DISPLAY_NAME:
+    type: string
+    required: true
+    title: Name
+    description: The name of the new subnet.
+  TF_VCN01_SUBNET01_CONFIG_CIDR_BLOCK:
+    type: string
+    required: true
+    pattern: "^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9]).(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\\/(3[0-2]|[1-2]?[0-9])$"
+    title: CIDR Block
+    description: The CIDR of the new Subnet. The new subnet's CIDR should not overlap with any other subnet CIDRs.
+  TF_VCN01_SUBNET01_CONFIG_DNS_LABEL:
+    type: string
+    required: true
+    title: DNS Label
+    maxLenght: 15
+    description: Subnet DNS Label. Only letters and numbers, starting with a letter. 15 characters max.
+  TF_VCN01_ROUTE01_CONFIG_DISPLAY_NAME:
+    type: string
+    required: true
+    title: Name
+    description: The name of the route table for the new subnet.
+  
