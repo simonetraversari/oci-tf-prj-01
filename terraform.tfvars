@@ -1,6 +1,3 @@
-variable "compartment_ocid" {}
-variable "region" {}
-
 variable "TF_VCN01_CONFIG" {
   type = object({
     cidr_block      = bool
