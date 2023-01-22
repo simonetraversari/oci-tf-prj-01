@@ -5,8 +5,10 @@ version: "20190304"
 locale: "en"
 
 variableGroups:
-  - title: "General Configuration"
+  - title: "Hidden Variable Group"
+    visible: false
     variables:
+      - tenancy_ocid    
       - compartment_ocid      
       - region
     
@@ -34,3 +36,9 @@ variables:
     required: true
     title: Name
     description: The name of the new Virtual Cloud Network (VCN)
+  TF_VCN01_CONFIG_COMPARTMENT_OCID:
+    type: oci:identity:compartment:id
+    required: true
+    title: Network Compartment
+    description: The compartment in which to create all Network resources
+    default: compartment_ocid
