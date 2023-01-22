@@ -3,29 +3,17 @@ variable "compartment_ocid" {}
 variable "region" {}
 
 ### Custom
-variable "TF_VCN01_CONFIG" {}
-
-
-variable "image_id" {
+variable "TF_VCN01_CONFIG_CIDR_BLOCK" {
   type = string
+  default = "10.0.0.0/16"
 }
 
-variable "availability_zone_names" {
-  type    = list(string)
-  default = ["us-west-1a"]
+variable "TF_VCN01_CONFIG_DNS_LABEL" {
+  type = string
+  default = "vcn01"
 }
 
-variable "docker_ports" {
-  type = list(object({
-    internal = number
-    external = number
-    protocol = string
-  }))
-  default = [
-    {
-      internal = 8300
-      external = 8300
-      protocol = "tcp"
-    }
-  ]
+variable "TF_VCN01_CONFIG_DISPLAY_NAME" {
+  type = string
+  default = "vcn01"
 }
