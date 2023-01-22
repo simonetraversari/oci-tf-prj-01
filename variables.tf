@@ -8,3 +8,5 @@ variable "TF_VCN01_CONFIG" {
     display_name    = string
   })
 }
+
+variable "sample" {}
