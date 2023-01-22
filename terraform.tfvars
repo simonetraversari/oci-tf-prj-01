@@ -7,6 +7,11 @@ variable "TF_VCN01_CONFIG" {
     dns_label       = string
     display_name    = string
   })
+  default = [
+    {
+      cidr_block   = "10.0.0.0/16"
+      dns_label    = "vcn01"
+      display_name = "vcn01"
+    }
+  ]
 }
-
-variable "sample" {}
