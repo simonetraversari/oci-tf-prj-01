@@ -1,5 +1,5 @@
 title: "Setup Networking"
-stackDescription: "Stck to deploy VCN, subnet, gateways"
+stackDescription: "Stack to deploy VCN, subnet, gateways"
 schemaVersion: 1.1.0
 version: "20190304"
 locale: "en"
