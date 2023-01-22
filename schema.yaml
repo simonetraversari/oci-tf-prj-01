@@ -5,6 +5,11 @@ version: "20190304"
 locale: "en"
 
 variableGroups:
+  - title: "General Configuration"
+    variables:
+      - compartment_ocid      
+      - region
+    
   - title: "VCN Configuration"
     variables:
       - TF_VCN01_CONFIG_CIDR_BLOCK
