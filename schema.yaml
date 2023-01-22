@@ -78,6 +78,6 @@ variables:
   TF_VCN01_ROUTE01_CONFIG_DISPLAY_NAME:
     type: string
     required: true
-    title: Name
+    title: Route Table Name
     description: The name of the route table for the new subnet.
   

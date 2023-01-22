@@ -31,3 +31,4 @@ resource "oci_core_subnet" "TF_VCN01_SUBNET01" {
   route_table_id = "${oci_core_route_table.TF_VCN01_ROUTE01.id}"
   dhcp_options_id = "${oci_core_virtual_network.TF_VCN01.default_dhcp_options_id}"
 }
+
