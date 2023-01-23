@@ -38,6 +38,25 @@ variable "TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES" {
   }))  
 }
 
+variable "TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES" {
+  type = list(object({
+      stateless     = bool,
+      protocol      = string,
+      dst           = string,
+      dst_type      = string,
+      src_port      = object({
+        min         = number,
+        max         = number
+      }),
+      dst_port      = object({
+        min         = number,
+        max         = number
+      }),
+      icmp_type     = number,
+      icmp_code     = number
+    }))
+}
+
 ###variable "TF_VCN01_SECLIST01_CONFIG_RULES" {
 ###  type = map(object({        
 ###    ingress_rules   = list(object({

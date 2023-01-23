@@ -1,5 +1,5 @@
 {
-      egress_rules      = [
+     [
         {
           stateless     = true
           protocol      = "6"
