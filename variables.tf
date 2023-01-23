@@ -16,7 +16,7 @@ variable "TF_VCN01_SUBNET01_CONFIG_CIDR_BLOCK" {}
 variable "TF_VCN01_SUBNET01_CONFIG_DISPLAY_NAME" {}
 variable "TF_VCN01_SUBNET01_CONFIG_DNS_LABEL" {}
 
-###variable "TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME" {}
+variable "TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME" {}
 ###variable "TF_VCN01_SECLIST01_CONFIG_RULES" {
 ###  type = map(object({    
 ###    compartment_id  = string,

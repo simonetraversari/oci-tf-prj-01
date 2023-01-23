@@ -32,12 +32,11 @@ resource "oci_core_subnet" "TF_VCN01_SUBNET01" {
   dhcp_options_id = "${oci_core_virtual_network.TF_VCN01.default_dhcp_options_id}"
 }
 
-###resource "oci_core_security_list" "TF_VCN01_SECLIST01" {  
-###  for_each       = "${var.TF_VCN01_SECLIST01_CONFIG_RULES}"
-###  compartment_id = "${var.compartment_ocid}"
-###  vcn_id         = "${oci_core_virtual_network.TF_VCN01.id}"
-###  display_name   = "${var.TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME}"
-###
+resource "oci_core_security_list" "TF_VCN01_SECLIST01" {  
+  compartment_id = "${var.compartment_ocid}"
+  vcn_id         = "${oci_core_virtual_network.TF_VCN01.id}"
+  display_name   = "${var.TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME}"
+
 ###  dynamic "egress_security_rules" {
 ###    iterator = egress_security_rules
 ###    for_each = each.value.egress_security_rules != null ? each.value.egress_security_rules : []
@@ -151,4 +150,4 @@ resource "oci_core_subnet" "TF_VCN01_SUBNET01" {
 ###    }
 ###    }
 ###  }
-###}
+}
