@@ -18,7 +18,7 @@ variable "TF_VCN01_SUBNET01_CONFIG_DNS_LABEL" {}
 
 variable "TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME" {}
 variable "TF_VCN01_SECLIST01_CONFIG_RULES" {
-  type = map(object({        
+  type = map({        
     ingress_rules   = list(object({
       stateless     = bool,
       protocol      = string,
@@ -51,5 +51,5 @@ variable "TF_VCN01_SECLIST01_CONFIG_RULES" {
       icmp_type     = number,
       icmp_code     = number
     }))
-  }))  
+  })  
 }
