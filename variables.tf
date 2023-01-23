@@ -18,6 +18,19 @@ variable "TF_VCN01_SUBNET01_CONFIG_DNS_LABEL" {}
 
 variable "TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME" {}
 
+variable "buckets" {
+  type = list(object({
+    name    = string
+    enabled = optional(bool, true)
+    website = optional(object({
+      index_document = optional(string, "index.html")
+      error_document = optional(string, "error.html")
+      routing_rules  = optional(string)
+    }), {})
+  }))
+}
+
+
 variable "TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES" {
   type = list(object({
       stateless     = bool,
