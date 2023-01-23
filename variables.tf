@@ -18,10 +18,7 @@ variable "TF_VCN01_SUBNET01_CONFIG_DNS_LABEL" {}
 
 variable "TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME" {}
 variable "TF_VCN01_SECLIST01_CONFIG_RULES" {
-  type = map(object({    
-    compartment_id  = string,
-    defined_tags    = map(string),
-    freeform_tags   = map(string),
+  type = map(object({        
     ingress_rules   = list(object({
       stateless     = bool,
       protocol      = string,
@@ -54,7 +51,5 @@ variable "TF_VCN01_SECLIST01_CONFIG_RULES" {
       icmp_type     = number,
       icmp_code     = number
     }))
-  }))
-  description = "Parameters for customizing Security List(s)."
-  default = {}
+  }))  
 }

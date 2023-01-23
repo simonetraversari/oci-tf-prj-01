@@ -38,7 +38,7 @@ resource "oci_core_security_list" "TF_VCN01_SECLIST01" {
   display_name   = "${var.TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME}"
 
   dynamic "egress_security_rules" {
-    iterator = TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES.egress_rules
+    iterator = TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES
     for_each = each.value.egress_security_rules != null ? each.value.egress_security_rules : []
 
     content {
