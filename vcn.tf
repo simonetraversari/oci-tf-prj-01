@@ -37,63 +37,63 @@ resource "oci_core_security_list" "TF_VCN01_SECLIST01" {
   vcn_id         = "${oci_core_virtual_network.TF_VCN01.id}"
   display_name   = "${var.TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME}"
 
-###  dynamic "egress_security_rules" {
-###    iterator = egress_security_rules
-###    for_each = each.value.egress_security_rules != null ? each.value.egress_security_rules : []
-###
-###    content {
-###      protocol =  egress_security_rules.value.protocol
-###      destination = egress_security_rules.value.destination
-###      description = egress_security_rules.value.description
-###      stateless = egress_security_rules.value.stateless
-###
-###      dynamic "tcp_options" {
-###        iterator = tcp_options
-###        for_each = lookup(egress_security_rules.value, "tcp_options", null) != null ? egress_security_rules.value.tcp_options : []
-###        content{
-###          dynamic "source_port_range" {
-###            iterator = source_port_range
-###            for_each = lookup(tcp_options.value, "source_port_range", null) != null ? tcp_options.value.source_port_range : []
-###            content {
-###              min = source_port_range.value.min
-###              max = source_port_range.value.max
-###            }
-###          }
-###          min = tcp_options.value.min
-###          max = tcp_options.value.max
-###        }
-###      }
-###
-###      dynamic "udp_options" {
-###        iterator = udp_options
-###        for_each = lookup(egress_security_rules.value, "udp_options", null) != null ? egress_security_rules.value.udp_options : []
-###
-###        content {
-###          dynamic "source_port_range" {
-###            iterator = source_ports
-###            for_each = lookup(udp_options.value, "source_port_range", null) != null ? udp_options.value.source_port_range : []
-###            content {
-###              min = source_ports.value.min
-###              max = source_ports.value.max
-###            }
-###          }
-###
-###          min = udp_options.value.min
-###          max = udp_options.value.max
-###        }
-###      }
-###
-###      dynamic "icmp_options" {
-###        iterator = icmp_options
-###        for_each = lookup(egress_security_rules.value, "icmp_options", null) != null ? egress_security_rules.value.icmp_options : []
-###        content {
-###          type = icmp_options.value.type
-###          code = icmp_options.value.code
-###        }
-###      }
-###    }
-###  }
-###
+  dynamic "egress_security_rules" {
+    iterator = TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES.egress_rules
+    for_each = each.value.egress_security_rules != null ? each.value.egress_security_rules : []
+
+    content {
+      protocol =  egress_security_rules.value.protocol
+      destination = egress_security_rules.value.destination
+      description = egress_security_rules.value.description
+      stateless = egress_security_rules.value.stateless
+
+      dynamic "tcp_options" {
+        iterator = tcp_options
+        for_each = lookup(egress_security_rules.value, "tcp_options", null) != null ? egress_security_rules.value.tcp_options : []
+        content{
+          dynamic "source_port_range" {
+            iterator = source_port_range
+            for_each = lookup(tcp_options.value, "source_port_range", null) != null ? tcp_options.value.source_port_range : []
+            content {
+              min = source_port_range.value.min
+              max = source_port_range.value.max
+            }
+          }
+          min = tcp_options.value.min
+          max = tcp_options.value.max
+        }
+      }
+
+      dynamic "udp_options" {
+        iterator = udp_options
+        for_each = lookup(egress_security_rules.value, "udp_options", null) != null ? egress_security_rules.value.udp_options : []
+
+        content {
+          dynamic "source_port_range" {
+            iterator = source_ports
+            for_each = lookup(udp_options.value, "source_port_range", null) != null ? udp_options.value.source_port_range : []
+            content {
+              min = source_ports.value.min
+              max = source_ports.value.max
+            }
+          }
+
+          min = udp_options.value.min
+          max = udp_options.value.max
+        }
+      }
+
+      dynamic "icmp_options" {
+        iterator = icmp_options
+        for_each = lookup(egress_security_rules.value, "icmp_options", null) != null ? egress_security_rules.value.icmp_options : []
+        content {
+          type = icmp_options.value.type
+          code = icmp_options.value.code
+        }
+      }
+    }
+  }
+
 ###  dynamic "ingress_security_rules" {
 ###    iterator = ingress_security_rules
 ###    for_each = each.value.ingress_security_rules != null ? each.value.ingress_security_rules : []
