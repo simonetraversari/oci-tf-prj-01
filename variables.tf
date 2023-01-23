@@ -18,7 +18,8 @@ variable "TF_VCN01_SUBNET01_CONFIG_DNS_LABEL" {}
 
 variable "TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME" {}
 variable "TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES" {
-  type = list(object({
+  type = map(object({        
+    egress_rules    = list(object({
       stateless     = bool,
       protocol      = string,
       dst           = string,
@@ -34,6 +35,7 @@ variable "TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES" {
       icmp_type     = number,
       icmp_code     = number
     }))
+  }))  
 }
 
 ###variable "TF_VCN01_SECLIST01_CONFIG_RULES" {

@@ -40,7 +40,7 @@ resource "oci_core_security_list" "TF_VCN01_SECLIST01" {
 
   dynamic "egress_security_rules" {
     iterator = egress_security_rules
-    for_each = "${var.TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES}" != null ? "${var.TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES}" : []
+    for_each = var.TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES != null ? var.TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES : []
 
     content {
       protocol =  egress_security_rules.value.protocol
