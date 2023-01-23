@@ -28,6 +28,8 @@ variableGroups:
       - TF_VCN01_SUBNET01_CONFIG_CIDR_BLOCK      
       - TF_VCN01_SUBNET01_CONFIG_DNS_LABEL
       - TF_VCN01_ROUTE01_CONFIG_DISPLAY_NAME
+      - TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME
+      - TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES
       
 variables:  
   TF_VCN01_CONFIG_CIDR_BLOCK:
@@ -80,4 +82,14 @@ variables:
     required: true
     title: Route Table Name
     description: The name of the route table for the new subnet.
+  TF_VCN01_SECLIST01_CONFIG_DISPLAY_NAME:
+    type: string
+    required: true
+    title: Security List Name
+    description: The name of the security list for the new subnet.
+  TF_VCN01_SECLIST01_CONFIG_EGRESS_RULES:
+    type: string
+    required: true
+    title: Egress Rules
+    description: JSON with required egress rules.
   
